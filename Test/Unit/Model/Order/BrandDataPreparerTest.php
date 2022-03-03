@@ -145,11 +145,22 @@ class BrandDataPreparerTest extends TestCase
             ->with($this->brandAttributeCode)
             ->willReturn(null);
 
+        $addressItemMock = $this->createMock(\Magento\Quote\Model\Quote\Address\Item::class);
+        $addressItemMock
+            ->expects($this->once())
+            ->method('getProduct')
+            ->willReturn($productMock3 = $this->createMock(\Magento\Catalog\Model\Product::class));
+        $productMock3
+            ->expects($this->once())
+            ->method('getData')
+            ->with($this->brandAttributeCode)
+            ->willReturn(null);
+
         $quote = $this->createMock(\Magento\Quote\Model\Quote::class);
         $quote
             ->expects($this->once())
             ->method('getAllVisibleItems')
-            ->willReturn([$quoteItemMock1, $quoteItemMock2]);
+            ->willReturn([$quoteItemMock1, $quoteItemMock2, $addressItemMock]);
 
         $this->assertEquals($resulBrandIds, $this->brandDataPreparer->getBrandIdsByQuote($quote));
     }

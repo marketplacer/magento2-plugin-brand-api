@@ -5,7 +5,7 @@ namespace Marketplacer\BrandApi\Model\Order;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Quote\Model\Quote;
-use Magento\Quote\Model\Quote\Item;
+use Magento\Quote\Model\Quote\Item\AbstractItem;
 use Marketplacer\BrandApi\Api\BrandRepositoryInterface;
 use Marketplacer\BrandApi\Api\BrandAttributeRetrieverInterface;
 
@@ -55,11 +55,11 @@ class BrandDataPreparer
     }
 
     /**
-     * @param Item $quoteItem
+     * @param AbstractItem $quoteItem
      * @return mixed
      * @throws LocalizedException
      */
-    public function getBrandIdByQuoteItem(Item $quoteItem)
+    public function getBrandIdByQuoteItem(AbstractItem $quoteItem)
     {
         $brandAttributeCode = $this->brandAttributeRetriever->getAttributeCode();
         return $quoteItem->getProduct()->getData($brandAttributeCode);
