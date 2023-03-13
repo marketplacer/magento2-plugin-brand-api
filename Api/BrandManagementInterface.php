@@ -6,15 +6,13 @@ use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface;
-use Marketplacer\BrandApi\Api\Data\MarketplacerBrandSearchResultsInterface;
 
 interface BrandManagementInterface
 {
     /**
      * @param int | string | null $brandId
      * @param int | string | null $storeId
-     * @return MarketplacerBrandInterface
+     * @return \Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface
      * @throws LocalizedException
      * @throws NoSuchEntityException
      */
@@ -22,20 +20,24 @@ interface BrandManagementInterface
 
     /**
      * @param SearchCriteriaInterface $searchCriteria
-     * @return MarketplacerBrandSearchResultsInterface
+     * @return \Marketplacer\BrandApi\Api\Data\MarketplacerBrandSearchResultsInterface
      */
     public function getList(SearchCriteriaInterface $searchCriteria);
 
     /**
-     * @param MarketplacerBrandInterface $brand
+     * @param \Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface $brand
      * @param int | string | null $brandId
      * @param int|string|null $storeId
-     * @return MarketplacerBrandInterface
+     * @return \Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface
      * @throws LocalizedException
      * @throws NoSuchEntityException
      * @throws AlreadyExistsException
      */
-    public function save(MarketplacerBrandInterface $brand, $brandId = null, $storeId = null);
+    public function save(
+        \Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface $brand,
+        $brandId = null,
+        $storeId = null
+    );
 
     /**
      * @param int | string | null $brandId
