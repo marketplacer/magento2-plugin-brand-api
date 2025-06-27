@@ -30,7 +30,7 @@ class MarketplacerBrandSearchResults extends SearchResult implements \Marketplac
      * @param \Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface[] $brands
      * @return $this
      */
-    public function setBrands(array $brands = null)
+    public function setBrands(?array $brands = null)
     {
         return $this->setItems($brands);
     }

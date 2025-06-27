@@ -17,7 +17,7 @@ interface MarketplacerBrandSearchResultsInterface
      * @param \Marketplacer\BrandApi\Api\Data\MarketplacerBrandInterface[] $brands
      * @return $this
      */
-    public function setBrands(array $brands = null);
+    public function setBrands(?array $brands = null);
 
     /**
      * Get search criteria.
